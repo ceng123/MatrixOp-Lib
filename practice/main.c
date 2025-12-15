@@ -1,28 +1,87 @@
-#ifndef MATRIX_OP_H
-#define MATRIX_OP_H
+#include <stdio.h>
+#include "matrix_op.h" // 引入您的函式庫標頭檔
 
-#define SIZE 3 // 定義矩陣維度為 3x3 [cite: 8, 28]
+int main() {
+    // ------------------------------------
+    // 1. 定義測試矩陣
+    // ------------------------------------
+    
+    // 矩陣 A
+    Matrix A = {
+        {1.0, 2.0, 3.0},
+        {4.0, 5.0, 6.0},
+        {7.0, 8.0, 9.0}
+    };
 
-// 建議的矩陣資料型態 (使用二維陣列)
-typedef float Matrix[SIZE][SIZE];
+    // 矩陣 B (用於加法和乘法)
+    Matrix B = {
+        {9.0, 8.0, 7.0},
+        {6.0, 5.0, 4.0},
+        {3.0, 2.0, 1.0}
+    };
 
-// 函式宣告 (Functions Declare) [cite: 29]
-// --- 基本運算 (Basic Operations) ---
-void matrix_add(Matrix A, Matrix B, Matrix Result);
-void matrix_subtract(Matrix A, Matrix B, Matrix Result);
+    // 矩陣 C (用於行列式和逆矩陣測試，確保行列式不為零)
+    Matrix C = {
+        {1.0, 0.0, 0.0},
+        {0.0, 2.0, 0.0},
+        {0.0, 0.0, 3.0}
+    };
+    
+    // 定義結果矩陣
+    Matrix Result;
+    float det_C;
 
-// --- 線性代數運算 (Linear Operations) ---
-void matrix_multiply(Matrix A, Matrix B, Matrix Result); // 標準矩陣乘法 [cite: 12, 37]
-void matrix_elementwise_multiply(Matrix A, Matrix B, Matrix Result); // 元素乘法 (Hadamard product) [cite: 15, 34, 36]
-void matrix_transpose(Matrix A, Matrix Result); // 轉置矩陣 [cite: 14, 38, 39]
+    printf("--- 3x3 Matrix Operations Test ---\n\n");
 
-// --- 進階運算 (Advanced Operations) ---
-float matrix_determinant(Matrix A); // 計算行列式 [cite: 17, 43]
-void matrix_adjoint(Matrix A, Matrix Result); // 計算伴隨矩陣 [cite: 18, 51]
-void matrix_inverse(Matrix A, Matrix Result); // 計算逆矩陣 [cite: 19, 65, 66]
+    // ------------------------------------
+    // 2. 測試基本運算：加法 (Addition)
+    // ------------------------------------
+    printf("--- Test: Matrix Addition (A + B) ---\n");
+    matrix_add(A, B, Result);
+    printf("Matrix A:\n");
+    print_matrix(A); 
+    printf("Matrix B:\n");
+    print_matrix(B);
+    printf("Result (A + B):\n");
+    print_matrix(Result);
+    printf("--------------------------------------\n\n");
 
-// 輔助函式 (Helper Functions)
-void print_matrix(Matrix M);
-void initialize_matrix(Matrix M, float values[SIZE*SIZE]);
 
-#endif
+    // ------------------------------------
+    // 3. 測試線性運算：轉置 (Transpose)
+    // ------------------------------------
+    printf("--- Test: Matrix Transpose (A^T) ---\n");
+    matrix_transpose(A, Result); // 轉置矩陣
+    printf("Matrix A:\n");
+    print_matrix(A);
+    printf("Result (A^T):\n");
+    print_matrix(Result); 
+    printf("--------------------------------------\n\n");
+
+
+    // ------------------------------------
+    // 4. 測試進階運算：行列式 (Determinant)
+    // ------------------------------------
+    printf("--- Test: Determinant (Det(C)) ---\n");
+    det_C = matrix_determinant(C);
+    printf("Matrix C:\n");
+    print_matrix(C);
+    printf("Determinant of C: %.2f\n", det_C); // C 的行列式應該是 1*2*3 = 6
+    printf("--------------------------------------\n\n");
+
+
+    // ------------------------------------
+    // 5. 測試進階運算：逆矩陣 (Inverse)
+    // ------------------------------------
+    if (det_C != 0) {
+        printf("--- Test: Inverse Matrix (C^-1) ---\n");
+        matrix_inverse(C, Result);
+        printf("Result (C^-1):\n");
+        print_matrix(Result);
+    } else {
+        printf("Cannot calculate inverse: Determinant is zero.\n");
+    }
+    printf("--------------------------------------\n\n");
+
+    return 0;
+}
