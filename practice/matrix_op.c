@@ -1,11 +1,13 @@
 #include "matrix_op.h"
-#include <stdio.h>
-// 實作轉置矩陣
-void matrix_transpose(Matrix A, Matrix Result) {
-    int i,j;
-    for ( i = 0; i < SIZE; i++) {
-        for ( j = 0; j < SIZE; j++) {
-            Result[j][i] = A[i][j];
-        }
+#include <stdlib.h>
+
+int* vAdd(int *A, int *B, int size)
+{
+    int *C = malloc(sizeof(int) * size);
+    int i = 0;
+    for (i = 0; i < size; i++)
+    {
+        C[i] = A[i] + B[i];
     }
+    return C;
 }
