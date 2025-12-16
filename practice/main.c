@@ -2,15 +2,15 @@
 #include "matrix_op.h"
 
 int main() {
-    int A[3][3] = {{1, 2, 3}, {2, 4, 6}, {8, 2, 3}};
-    int B[3][3] = {{1, 2, 3}, {5, 6, 7}, {8, 9, 10}};
-    int C[3][3]; // 修正為 3x3
+    int A[SIZE][SIZE] = {{1, 2, 3}, {2, 4, 6}, {8, 2, 3}};
+    int B[SIZE][SIZE] = {{1, 2, 3}, {5, 6, 7}, {8, 9, 10}};
+    int C[SIZE][SIZE]; // 存儲結果
 
-    vAdd(A, B, C, 3);
-    int i,j,k;
+    vAdd(A, B, C);
+
     printf("Result of Matrix Addition:\n");
-    for ( i = 0; i < 3; i++) {
-        for ( j = 0; j < 3; j++) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
             printf("%d ", C[i][j]);
         }
         printf("\n");
