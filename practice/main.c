@@ -8,8 +8,43 @@ int main() {
     int C[SIZE][SIZE]; 
     int i,j;
     vAdd(A, B, C);
-
     printf("Result of Matrix Addition:\n");
+    for ( i = 0; i < SIZE; i++) {
+        for ( j = 0; j < SIZE; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    vSub(A, B, C);
+    printf("Result of Matrix Subtraction:\n");
+    for ( i = 0; i < SIZE; i++) {
+        for ( j = 0; j < SIZE; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    vMultiple(A, B, C);
+    printf("Result of Matrix Multiplication:\n");
+    for ( i = 0; i < SIZE; i++) {
+        for ( j = 0; j < SIZE; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    vElement_wise_Multiple(A, B, C);
+    printf("Result of Element-wise Multiplication:\n");
+    for ( i = 0; i < SIZE; i++) {
+        for ( j = 0; j < SIZE; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    vTransport(A, B, C);
+    printf("Result of Matrix Transposition:\n");
     for ( i = 0; i < SIZE; i++) {
         for ( j = 0; j < SIZE; j++) {
             printf("%d ", C[i][j]);
