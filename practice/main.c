@@ -7,10 +7,10 @@ int main() {
     int C[3][3]; // 修正為 3x3
 
     vAdd(A, B, C, 3);
-
+    int i,j,k;
     printf("Result of Matrix Addition:\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for ( i = 0; i < 3; i++) {
+        for ( j = 0; j < 3; j++) {
             printf("%d ", C[i][j]);
         }
         printf("\n");
