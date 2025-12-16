@@ -1,8 +1,7 @@
-#ifndef VECTOROP_H
-#define VECTOROP_H
+#ifndef MATRIX_OP_H
+#define MATRIX_OP_H
+#define SIZE 3
 
-int* vAdd(int *A, int *B, int size);
-int* vSub(int *A, int *B, int size);
-int vDot(int *A, int *B, int size);
+int* vAdd(int *A[SIZE][SIZE], int *B[SIZE][SIZE], int *C[SIZE][SIZE]);
 
 #endif
