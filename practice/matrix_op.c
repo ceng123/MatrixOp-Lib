@@ -1,13 +1,21 @@
 #include "matrix_op.h"
 #include <stdlib.h>
-
-int* vAdd(int *A, int *B, int size)
+#include "stdio.h"
+void* vAdd(int **A,int size1, int **B,int size2,int **C, int size)
 {
-    int *C = malloc(sizeof(int) * size);
     int i = 0;
-    for (i = 0; i < size; i++)
-    {
-        C[i] = A[i] + B[i];
+    int j=0;
+    for (i = 0; i < size1; i++){
+       for(j=0;j<size2;j++){
+        C[i][j]=A[i][j]+B[i][j];
+       } 
     }
-    return C;
+for (i = 0; i < size1; i++){
+       for(j=0;j<size2;j++){
+       
+        printf("%d",C[i][j]);
+        printf("\t");
+       } 
+       printf("\n");
+    }
 }
