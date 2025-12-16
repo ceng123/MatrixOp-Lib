@@ -7,7 +7,7 @@ int main()
     int B[4] = {6, -5, -4, 3};
 
     int *C;
-    C = vSub(A, B, 4);
+    C = vAdd(A, B, 4);
     int i = 0;
     for (i = 0; i < 4; i++)
     {
